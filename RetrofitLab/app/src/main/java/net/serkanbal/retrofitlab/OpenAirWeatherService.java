@@ -10,7 +10,7 @@ import retrofit2.http.Query;
 
 public interface OpenAirWeatherService {
 
-@GET("weather?appid=1dc7f58282bec421f230ea3985ee589d")
+@GET("weather?appid=1dc7f58282bec421f230ea3985ee589d&units=metric")
     Call<OpenAirWeatherObject> getCity(@Query("q") String cityName);
 
 }

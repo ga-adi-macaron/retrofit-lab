@@ -73,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
                         String loc = response.body().getName();
 
                         mCity.setText("City: " + loc);
-                        mHumidity.setText("Humidity: " + humidity);
-                        mTemperature.setText("Temperature: " + temperature);
-                        mPressure.setText("Pressure: " + pressure);
+                        mHumidity.setText("Humidity: " + humidity + " %");
+                        mTemperature.setText("Temperature: " + temperature + " degrees Celcius");
+                        mPressure.setText("Pressure: " + pressure + " hPa");
                         mWeather.setText("Weather: " + weather);
 
                     } catch (Exception e) {
