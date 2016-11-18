@@ -50,3 +50,9 @@ Here is an image of an example working app:
 [OpenWeatherMap API](https://home.openweathermap.org)
 
 [Retrofit](http://square.github.io/retrofit/)
+
+---
+
+## Licensing
+1. All content is licensed under a CC­BY­NC­SA 4.0 license.
+2. All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact [legal@ga.co](mailto:legal@ga.co).
