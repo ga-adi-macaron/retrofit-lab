@@ -18,9 +18,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import shuvalov.nikita.weatheragain.JSONPOJOS.WeatherData;
 
 public class MainActivity extends AppCompatActivity {
-    TextView mCity, mWeather, mPressure, mTemperature, mHumidity, mDescription;
+    TextView mCity, mWeather, mPressure, mTemperature, mHumidity;
     EditText mUserInput;
     Button mFetchButton;
+
+    public static final String FREEDOM_UNITS ="imperial";
+    public static final String CELSIUS = "metric";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         mWeather = (TextView)findViewById(R.id.current_weather_view);
         mPressure = (TextView)findViewById(R.id.barometric_view);
         mTemperature = (TextView)findViewById(R.id.temp_view);
-        mDescription = (TextView)findViewById(R.id.description);
         mHumidity = (TextView)findViewById(R.id.humidity_view);
 
         mUserInput = (EditText)findViewById(R.id.user_entry_box);
@@ -45,28 +48,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setEmUp(){
-        final String userInput = mUserInput.getText().toString();
-
         mFetchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String userInput = mUserInput.getText().toString();
                 ConnectivityManager connectivityManager =(ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
                 NetworkInfo info = connectivityManager.getActiveNetworkInfo();
                 if (info!=null && info.isConnected()){
                     Retrofit retrofit = new Retrofit.Builder().baseUrl(WeatherAppConstants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
                     OpenWeatherMapService service = retrofit.create(OpenWeatherMapService.class);
-                    Call<WeatherData> call = service.getWeather(userInput);
+                    Call<WeatherData> call = service.getWeather(userInput, FREEDOM_UNITS);
 
                     call.enqueue(new Callback<WeatherData>() {
                         @Override
                         public void onResponse(Call<WeatherData> call, Response<WeatherData> response) {
                             try{
-
                                 String cityName = response.body().getName();
+                                String humidity = response.body().getMain().getHumidity().toString();
+                                String temperature = String.valueOf(response.body().getMain().getTemp().intValue());
                                 String pressure = response.body().getMain().getPressure().toString();
                                 String description = response.body().getWeather().get(0).getDescription();
-                                String humidity = response.body().getMain().getHumidity().toString();
-                                String temperature = response.body().getMain().getTemp().toString();
+
 
                                 knockEmDown(cityName,pressure,description,humidity,temperature);
 
@@ -89,11 +91,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void knockEmDown(String cityname, String pressure, String description, String humidity, String temperature){
-        mCity.setText(cityname);
-        mPressure.setText(pressure);
-        mDescription.setText(description);
-        mHumidity.setText(humidity);
-        mTemperature.setText(temperature);
+        mCity.setText("City : " +cityname);
+        mPressure.setText("Pressure : "+pressure+"mm");
+        mWeather.setText("Description : "+description);
+        mHumidity.setText("Humidity : "+humidity+ "%");
+        mTemperature.setText("Temperature : "+temperature+"°F");
     }
 
 }
