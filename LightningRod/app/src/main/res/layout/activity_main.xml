@@ -14,7 +14,7 @@
 
     <!-- I want to add a Google Now style background to the
     Edit Text, but I can't seem to figure it out -->
-    
+
     <EditText
         android:id="@+id/search_field"
         android:layout_width="match_parent"
