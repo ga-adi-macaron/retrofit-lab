@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">OpenWeatherApp</string>
+    <string name="city_text">City: %s</string>
+    <string name="weather_description_text">Weather: %s</string>
+    <string name="humidity_text">Humidity: %d%%</string> <!-- %% is an "escaped" percent sign -->
+    <string name="pressure_text">Pressure: %,d hPa</string>
+    <string name="temperature_text">Temperature: %2.1f°</string>
+</resources>
