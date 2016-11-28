@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="shuvalov.nikita.weatheragain.MainActivity">
+
+
+    <EditText
+        android:id="@+id/user_entry_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Input City Name"/>
+    <Button
+        android:id="@+id/fetch_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_entry_box"
+        android:text="Fetch Weather"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"/>
+
+    <TextView
+        android:id="@+id/city_name_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fetch_button"
+        android:textSize="18sp"
+        android:textColor="#555"
+        android:text="City: "/>
+    <TextView
+        android:id="@+id/current_weather_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/city_name_view"
+        android:textSize="18sp"
+        android:textColor="#555"
+        android:text="Weather: "/>
+    <TextView
+        android:id="@+id/barometric_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/current_weather_view"
+        android:textSize="18sp"
+        android:textColor="#555"
+        android:text="pressure:"/>
+    <TextView
+        android:id="@+id/humidity_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/barometric_view"
+        android:textSize="18sp"
+        android:textColor="#555"
+        android:text="Humidity: "/>
+    <TextView
+        android:id="@+id/temp_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/humidity_view"
+        android:textSize="18sp"
+        android:textColor="#555"
+        android:text="Temperature: "/>
+
+</RelativeLayout>
